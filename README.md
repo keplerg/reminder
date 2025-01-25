@@ -33,6 +33,8 @@ Makes the reminder window appear on demand (no schedule). This could be useful c
 
 This command can NOT be run from cron since you need to be connected to your terminal display.
 
+The best way to run this executable is to add it to your startup programs.
+
 
 ## Build
 

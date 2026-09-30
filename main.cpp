@@ -78,8 +78,8 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     std::string text = "";
-    const char *background_color = "yellow";
-    const char *color = "black";
+    char *background_color = strdup("yellow");
+    char *color = strdup("black");
     time_t now = time(0);
     time_t last_processed = now - DELAY_SECONDS;
     tm* local = localtime(&now);
@@ -159,16 +159,18 @@ int main(int argc, char *argv[])
                             if (strlen(match[2].str().c_str()) > 1) {
                                 background_color = strdup(match[2].str().c_str());
                             } else {
-                                background_color = "yellow";
+                                background_color = strdup("yellow");
                             }
                             if (strlen(match[3].str().c_str()) > 1) {
-                                color = match[3].str().c_str();
+                                color = strdup(match[3].str().c_str());
                             } else {
-                                color = "black";
+                                color = strdup("black");
                             }
                             text = match[4].str();
                             show_window(title, background_color, color, text);
                             shown = true;
+                            free(background_color);
+                            free(color);
                         }
                     }
                 }
